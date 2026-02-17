@@ -65,6 +65,8 @@ public class Agenda {
         System.out.println("No se encontró ningún contacto con ese nombre y apellido.");
     }
 
+    // Eliminar un contacto
+
     public void eliminarContacto(Contacto c) {
         if (contactos.remove(c)) {
             System.out.println("Contacto eliminado correctamente.");
