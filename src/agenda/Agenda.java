@@ -8,34 +8,32 @@ public class Agenda {
 
     public Agenda() {
         this(10);
-    }
+    } // constructor para crear la agenda con capacidad para 10 contactos.
 
     public Agenda(int capacidad) {
-        this.capacidad = capacidad;
-        this.contactos = new ArrayList<>();
+        this.capacidad = capacidad; // Capacidad máxima
+        this.contactos = new ArrayList<>(); // inicializa la lista de contactos vacía
     }
 
     public String añadirContacto(Contacto c) {
         if (agendaLlena()) {
-            System.out.println("La agenda está llena. No se puede añadir más contactos.");
             return "La agenda está llena. No se puede añadir más contactos.";
-        } else if (existeContacto(c)) {
-            System.out.println("El contacto ya existe (mismo nombre y apellido).");
-            for (Contacto contacto : contactos) {
-                if (contacto.equals(c) && contacto.getTelefono().equals(c.getTelefono())) {
-                    return "El contacto ya existe (mismo nombre y apellido).";
+        }
+
+        for (Contacto contacto : contactos) {
+            if (contacto.equals(c)) {
+                if (contacto.getTelefono().equals(c.getTelefono())) {
+                    return "El contacto ya existe (mismo nombre, apellido y teléfono).";
                 } else {
                     contacto.setTelefono(c.getTelefono());
                     return "Teléfono actualizado.";
                 }
             }
-        } else {
-            contactos.add(c);
-            System.out.println("Contacto añadido correctamente.");
-            return "Contacto añadido correctamente.";
         }
-        return "Operacion finalizada";
-    }
+
+        contactos.add(c);
+        return "Contacto añadido correctamente.";
+    } // <-- ESTA LLAVE ESTABA MAL
 
     public boolean existeContacto(Contacto c) {
         return contactos.contains(c);
@@ -66,7 +64,6 @@ public class Agenda {
     }
 
     // Eliminar un contacto
-
     public void eliminarContacto(Contacto c) {
         if (contactos.remove(c)) {
             System.out.println("Contacto eliminado correctamente.");
