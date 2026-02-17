@@ -167,8 +167,7 @@ public class AgendaUI extends JFrame {
 
         try {
             Contacto c = new Contacto(nombre, apellido, telefono);
-            agenda.añadirContacto(c);
-            escribirSalida("✅ Contacto añadido: " + nombre + " " + apellido);
+            escribirSalida(agenda.añadirContacto(c));
         } catch (IllegalArgumentException e) {
             mostrarMensaje("Error: " + e.getMessage());
         }

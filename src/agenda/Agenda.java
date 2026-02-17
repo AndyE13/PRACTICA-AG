@@ -15,15 +15,26 @@ public class Agenda {
         this.contactos = new ArrayList<>();
     }
 
-    public void añadirContacto(Contacto c) {
+    public String añadirContacto(Contacto c) {
         if (agendaLlena()) {
             System.out.println("La agenda está llena. No se puede añadir más contactos.");
+            return "La agenda está llena. No se puede añadir más contactos.";
         } else if (existeContacto(c)) {
             System.out.println("El contacto ya existe (mismo nombre y apellido).");
+            for (Contacto contacto : contactos) {
+                if (contacto.equals(c) && contacto.getTelefono().equals(c.getTelefono())) {
+                    return "El contacto ya existe (mismo nombre y apellido).";
+                } else {
+                    contacto.setTelefono(c.getTelefono());
+                    return "Teléfono actualizado.";
+                }
+            }
         } else {
             contactos.add(c);
             System.out.println("Contacto añadido correctamente.");
+            return "Contacto añadido correctamente.";
         }
+        return "Operacion finalizada";
     }
 
     public boolean existeContacto(Contacto c) {
