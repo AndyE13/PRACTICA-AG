@@ -33,7 +33,7 @@ public class Agenda {
 
         contactos.add(c);
         return "Contacto añadido correctamente.";
-    } // <-- ESTA LLAVE ESTABA MAL
+    } 
 
     public boolean existeContacto(Contacto c) {
         return contactos.contains(c);
